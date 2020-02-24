@@ -4,7 +4,10 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         </head>
         <body>
-            <h1>Welcome Sujeet</h1>
+            <div class="row">
+              <div><h1>Welcome Sujeet</h1></div>
+              <div></div>
+              </div>
             <div class="row">
 
                 <div class="col-10 shadow" id="question-container">
@@ -25,6 +28,7 @@
                    <div id="questions-indexing">
                     
                    </div>
+                   <div class="timmer">Time Left: <span id="timmer"></span></div>
                 <div>
                 </div>
             </div>
@@ -40,7 +44,7 @@
             $(document).ready(function(){
                 var questions = [];
                 var currentIndex = 0;
-                console.log($( window ).height());
+                
                // $('#question-container').height($( window ).height() - 200)
                 loadQuestions();
                 function loadQuestions(){
@@ -48,10 +52,11 @@
                         url:'questions.json',
                         method:'GET',
                         success: function(res){
-                            console.log(res);
+                            //console.log(res);
                             questions = res;
                             renderQuestion(questions[0], 0);
                             renderIndex(questions);
+                            initiateTimer(2); // Time in minuts
                         }
                     });
                 }
@@ -111,7 +116,7 @@
                  * TO save quetions and answer 
                 **/
                 $('#submit-btn').click(function(){
-                    console.log(questions)
+                    saveData(questions);
                 });
 
                 /**
@@ -122,6 +127,47 @@
                     currentIndex = index;
                     renderQuestion(questions[index],index);
                 });
+
+                /**
+                * To Start timmer
+                */
+
+                function initiateTimer(time){
+                    $('#timmer').text(time + ' m: 00 s' );
+                    var timmer = time * 60;
+                    var hours = 0;
+                    var interval = setInterval(function(){
+                        timmer--;
+                        var minuts = Math.floor(timmer / 60);
+                        var hours = Math.floor(timmer / 3600);
+                        var sec = timmer % 60;
+                        hours < 10 ? hours = '0'+ hours: hours = hours;
+                        minuts < 10 ? minuts = '0'+ minuts: minuts = minuts;
+                        sec < 10 ? sec = '0'+ sec: sec = sec;
+
+                        $('#timmer').text(minuts + ' m:' + sec +' s');
+                        if(timmer == 0){
+                           stopTimmer(interval); 
+                        }
+                    },1000);
+
+                }
+
+                /**
+                * TO stop set interval
+                */
+                function stopTimmer(interval){
+                     clearInterval(interval); // This is javascript function to stop setInterval 
+                     saveData(questions);
+                }
+
+                /**
+                 * To submit result
+                 */
+
+                 function saveData(data){
+                     console.log(data);
+                 }
                 
             })
             </script>

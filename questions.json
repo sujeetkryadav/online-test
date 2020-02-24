@@ -458,7 +458,6 @@
   {
     "id": 3,
     "ques": "Questions3 description",
-    "type": "freetext",
     "selected": null,
     "options": [
       {
@@ -506,7 +505,6 @@
   {
     "id": 2,
     "ques": "If the average marks of three batches of 55, 60 and 45 students respectively is 50, 55, 60, then the average marks of all the students is:",
-    "type": "single",
     "selected": null,
     "options": [
       {
@@ -530,7 +528,6 @@
   {
     "id": 4,
     "ques": "Questions2 description",
-    "type": "single",
     "selected": null,
     "options": [
       {
@@ -554,7 +551,6 @@
   {
     "id": 3,
     "ques": "Questions3 description",
-    "type": "freetext",
     "selected": null,
     "options": [
       {
@@ -572,6 +568,236 @@
       {
         "id": 8,
         "answer": "None of these"
+      }
+    ]
+  },
+  {
+    "id": "27",
+    "ques": "Find the average of first 97 natural numbers.",
+    "selected": null,
+    "options": [
+      {
+        "answer": "47",
+        "id": "1"
+      },
+      {
+        "answer": "37",
+        "id": "2"
+      },
+      {
+        "answer": "48",
+        "id": "3"
+      },
+      {
+        "answer": "49",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "28",
+    "ques": "The average age of A, B, C, D and E is 40 years. The average age of A and B is 35 years and the average of C and D is 42 years. Age of E is :",
+    "selected": null,
+    "options": [
+      {
+        "answer": "48",
+        "id": "1"
+      },
+      {
+        "answer": "46",
+        "id": "2"
+      },
+      {
+        "answer": "45",
+        "id": "3"
+      },
+      {
+        "answer": "42",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "29",
+    "ques": "The average of the first five multiples of 9 is ?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "20",
+        "id": "1"
+      },
+      {
+        "answer": "27",
+        "id": "2"
+      },
+      {
+        "answer": "28",
+        "id": "3"
+      },
+      {
+        "answer": "30",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "30",
+    "ques": "Who is the author of the book \u201cTools and Weapons: The Promise and The Peril of the Digital Age\u201d?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "Sundar Pichai",
+        "id": "1"
+      },
+      {
+        "answer": "Brad Smith",
+        "id": "2"
+      },
+      {
+        "answer": "Satya Nadella",
+        "id": "3"
+      },
+      {
+        "answer": "Jeff Bezos",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "31",
+    "ques": "The Indian Institute of Forest Management (IIFM) is located in which city?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "Jaipur",
+        "id": "1"
+      },
+      {
+        "answer": "Bhopal",
+        "id": "2"
+      },
+      {
+        "answer": "Dehradun",
+        "id": "3"
+      },
+      {
+        "answer": "Delhi",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "32",
+    "ques": "Which state / UT has announced free electricity for people using up to 200 units under a domestic connection?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "Delhi",
+        "id": "1"
+      },
+      {
+        "answer": "Andhra Pradesh",
+        "id": "2"
+      },
+      {
+        "answer": "Karnataka",
+        "id": "3"
+      },
+      {
+        "answer": "Madhya Pradesh",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "33",
+    "ques": "Which state government has launched \u2018Save Green, Stay Clean\u2019 campaign?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "Punjab",
+        "id": "1"
+      },
+      {
+        "answer": "Orissa",
+        "id": "2"
+      },
+      {
+        "answer": "Maharashtra",
+        "id": "3"
+      },
+      {
+        "answer": "West Bengal",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "34",
+    "ques": "Which Indian personality has been honoured with the prestigious 2019 Ramon Magsaysay Award?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "Mary Kom",
+        "id": "1"
+      },
+      {
+        "answer": "Ravish Kumar",
+        "id": "2"
+      },
+      {
+        "answer": "Anna Hazare",
+        "id": "3"
+      },
+      {
+        "answer": "K Sivan ",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "35",
+    "ques": "what is your name ?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "ram",
+        "id": "1"
+      },
+      {
+        "answer": "sham",
+        "id": "2"
+      },
+      {
+        "answer": "laxman",
+        "id": "3"
+      },
+      {
+        "answer": "bharat",
+        "id": "4"
+      }
+    ]
+  },
+  {
+    "id": "36",
+    "ques": "The Union Government has set up KABIL for what purpose?",
+    "selected": null,
+    "options": [
+      {
+        "answer": "To support women entrepreneurship",
+        "id": "1"
+      },
+      {
+        "answer": "To provide free education ",
+        "id": "2"
+      },
+      {
+        "answer": "To ensure supply of critical Minerals",
+        "id": "3"
+      },
+      {
+        "answer": "To promote digitization",
+        "id": "4"
       }
     ]
   }
