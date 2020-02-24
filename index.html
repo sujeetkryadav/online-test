@@ -1,174 +1,49 @@
         <html>
         <head>
             <link rel="stylesheet" href="style.css">
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         </head>
-        <body>
+        <body class="bg-light">
+        <header class="bg-primary text-center py-4 mb-4">
+            <div class="container">
+            </div>
+        </header>
+        <div class="container-fluid">
             <div class="row">
-              <div><h1>Welcome Sujeet</h1></div>
-              <div></div>
-              </div>
-            <div class="row">
-
-                <div class="col-10 shadow" id="question-container">
-                   <div id="question"></div>
+                <div class="col-md-9 card border-0 shadow" id="question-container">
+                   <div id="question" class="alert alert-secondary show"></div>
                    <div><ul id="options"></ul></div>
-                  <div class="btn-box">
-                     <div class="previous">
-                        <button id="previous-btn">Previous</button>
-                      </div> 
-                      <div class="next">
-                        <button id="next-btn">Next</button>
-                        <button id="submit-btn">Submit</button>
-                      </div> 
-                  </div>
                 </div>
 
-                <div class="col-2">
+                <div class="col-md-3">
                    <div id="questions-indexing">
-                    
                    </div>
                    <div class="timmer">Time Left: <span id="timmer"></span></div>
                 <div>
-                </div>
+              </div>
             </div>
+            
             <div class="footer">
-                <div class="copyright">
-                        <div class="container">
-                            <span>Your footer</span> 
+                        <div class="container-fluid">
+                         <div class="row">
+                            <div class="col-md-9 btn-box">
+                                <div class="previous">
+                                    <button id="previous-btn" class="btn btn-primary">
+                                    <i class="fa fa-arrow-circle-o-left"></i> Previous</button>
+                                </div> 
+                                <div class="next">
+                                    <button id="next-btn" class="btn btn-primary">
+                                     Next <i class="fa fa-arrow-circle-o-right"></i></button>
+                                </div> 
+                            </div>
+                            <div class="col-md-3 btn-box">
+                              <button id="submit-btn" class="btn btn-danger"><i class="fa fa-power-off"></i> Submit and Exit Test</button>
+                            </div> 
                         </div>
-                    </div>
+                </div>
                 </div>
         </body>
-            <script>
-            $(document).ready(function(){
-                var questions = [];
-                var currentIndex = 0;
-                
-               // $('#question-container').height($( window ).height() - 200)
-                loadQuestions();
-                function loadQuestions(){
-                    $.ajax({
-                        url:'questions.json',
-                        method:'GET',
-                        success: function(res){
-                            //console.log(res);
-                            questions = res;
-                            renderQuestion(questions[0], 0);
-                            renderIndex(questions);
-                            initiateTimer(2); // Time in minuts
-                        }
-                    });
-                }
-                /**
-                 * TO render questions with answer
-                **/
-                function renderQuestion(question, index){
-                    //console.log(question.selected)
-                    $('#question').empty();
-                    $('#question').append('<p>' + (index+1) +'.' + question.ques + '</p>');
-                    var options = '';
-                    for(var i = 0; i < question.options.length; i++){
-                        options += '<li><input type="radio" name="option" value="'+question.options[i].answer+'">'
-                                +'<label>'+question.options[i].answer+'</label</li>';
-                    }
-                    $('#options').empty();
-                    $('#options').append(options);
-                    $('input:radio[name="option"][value="'+question.selected+'"]').prop('checked', true);
-                }
-
-                function renderIndex(questions){
-                    var btns = '';
-                    for(var i = 0; i < questions.length; i++){
-                       btns += '<button data-index="'+i+'" class="question-index">' + (i + 1) +'</button>';
-                    }
-                    $('#questions-indexing').empty();
-                    $('#questions-indexing').append(btns);
-                }
-                /**
-                 * TO load next question
-                **/
-                $('#next-btn').click(function(){
-                   if(currentIndex < questions.length -1){
-                    currentIndex++;
-                    renderQuestion(questions[currentIndex], currentIndex);
-                   }
-                   
-                });
-
-                /**
-                 * TO load next question
-                **/
-                $('#previous-btn').click(function(){
-                    if(currentIndex >= 1){
-                        currentIndex--;
-                        renderQuestion(questions[currentIndex], currentIndex);
-                    }
-                });
-
-                /**
-                 * TO detect click on option
-                **/
-                $('body').on('click','input[name=option]',function(){
-                    questions[currentIndex].selected = $(this).val();
-                })
-                /**
-                 * TO save quetions and answer 
-                **/
-                $('#submit-btn').click(function(){
-                    saveData(questions);
-                });
-
-                /**
-                 * TO navigate to question
-                **/
-                $('body').on('click', 'button.question-index',function(){
-                    var index = $(this).data('index');
-                    currentIndex = index;
-                    renderQuestion(questions[index],index);
-                });
-
-                /**
-                * To Start timmer
-                */
-
-                function initiateTimer(time){
-                    $('#timmer').text(time + ' m: 00 s' );
-                    var timmer = time * 60;
-                    var hours = 0;
-                    var interval = setInterval(function(){
-                        timmer--;
-                        var minuts = Math.floor(timmer / 60);
-                        var hours = Math.floor(timmer / 3600);
-                        var sec = timmer % 60;
-                        hours < 10 ? hours = '0'+ hours: hours = hours;
-                        minuts < 10 ? minuts = '0'+ minuts: minuts = minuts;
-                        sec < 10 ? sec = '0'+ sec: sec = sec;
-
-                        $('#timmer').text(minuts + ' m:' + sec +' s');
-                        if(timmer == 0){
-                           stopTimmer(interval); 
-                        }
-                    },1000);
-
-                }
-
-                /**
-                * TO stop set interval
-                */
-                function stopTimmer(interval){
-                     clearInterval(interval); // This is javascript function to stop setInterval 
-                     saveData(questions);
-                }
-
-                /**
-                 * To submit result
-                 */
-
-                 function saveData(data){
-                     console.log(data);
-                 }
-                
-            })
-            </script>
+            <script src="myscript.js"></script>
         </html>
