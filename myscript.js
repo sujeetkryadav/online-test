@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  /**
+   * TO Block copy paste on the page
+   */
+  $("body").bind("cut copy paste", function(e) {
+    e.preventDefault();
+  });
+  $(document).bind("contextmenu", function(e) {
+    return false;
+  });
+
   var questions = [];
   var currentIndex = 0;
 
