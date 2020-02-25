@@ -37,7 +37,7 @@ $(document).ready(function() {
     var options = "";
     for (var i = 0; i < question.options.length; i++) {
       options +=
-        '<li class="form-check"><label><input type="radio" name="option" value="' +
+        '<li><label><input type="radio" name="option" value="' +
         question.options[i].answer +
         '">' +
         '<span class="label-text">' +
