@@ -6,6 +6,8 @@
 }
 #question-container {
   padding: 30px;
+  height: 500px;
+  overflow: auto;
 }
 ul {
   list-style: none;

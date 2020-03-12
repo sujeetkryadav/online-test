@@ -11,7 +11,7 @@ $(document).ready(function() {
 
   var questions = [];
   var currentIndex = 0;
-
+  var interval = null;
   // $('#question-container').height($( window ).height() - 200)
   loadQuestions();
   function loadQuestions() {
@@ -23,7 +23,12 @@ $(document).ready(function() {
         questions = res;
         renderQuestion(questions[0], 0);
         renderIndex(questions);
-        initiateTimer(60); // Time in minuts
+        console.log(localStorage.getItem("timmer"));
+        if (localStorage.getItem("timmer")) {
+          initiateTimer(localStorage.getItem("timmer") / 60); // Time in minuts
+        } else {
+          initiateTimer(60); // Time in minuts
+        }
       }
     });
   }
@@ -120,10 +125,10 @@ $(document).ready(function() {
    */
 
   function initiateTimer(time) {
-    $("#timmer").text(time + " m: 00 s");
+    $("#timmer").text(Math.floor(time) + " m: 00 s");
     var timmer = time * 60;
     var hours = 0;
-    var interval = setInterval(function() {
+    interval = setInterval(function() {
       timmer--;
       var minuts = Math.floor(timmer / 60);
       var hours = Math.floor(timmer / 3600);
@@ -133,6 +138,7 @@ $(document).ready(function() {
       sec < 10 ? (sec = "0" + sec) : (sec = sec);
 
       $("#timmer").text(minuts + " m:" + sec + " s");
+      localStorage.setItem("timmer", timmer);
       if (timmer == 0) {
         stopTimmer(interval);
       }
@@ -152,6 +158,8 @@ $(document).ready(function() {
    */
 
   function saveData(data) {
+    clearInterval(interval);
+    localStorage.clear();
     console.log(data);
   }
 });
